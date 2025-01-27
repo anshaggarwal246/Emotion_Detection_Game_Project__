@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Recognition Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <script defer src="service-worker.js"></script>
+</head>
+<body>
+    <div class="floating-emojis">
+        <div class="floating-emoji">😄</div>
+        <div class="floating-emoji">😢</div>
+        <div class="floating-emoji">😠</div>
+        <div class="floating-emoji">😱</div>
+        <div class="floating-emoji">🤢</div>
+        <div class="floating-emoji">😲</div>
+        <div class="floating-emoji">😐</div>
+        <div class="floating-emoji">😊</div>
+    </div>
+    <div class="container">
+        <h1 class="dynamic-text">Emotion Recognition Game</h1>
+        
+        <!-- Mode Selection Screen -->
+        <div id="modeSelection" class="fade-in">
+            <button class="mode-button slide-in-left" onclick="selectMode('liveDetection')">Live Emotion Detection</button>
+            <button class="mode-button slide-in-right" onclick="selectMode('challenge')">Emotion Detection Challenge</button>
+            <button class="mode-button slide-in-left" onclick="selectMode('ageGenderDetection')">Age & Gender Detection</button>
+        </div>
+        
+        <!-- Game Screen -->
+        <div id="gameContainer" class="fade-in" style="display:none;">
+            <h2 id="gameTitle">Game</h2>
+            <button class="back-button" onclick="goBack()">Back</button>
+            <button class="start-button" onclick="startGame()">Start Game</button>
+            
+            <!-- Video Container with Emoji Overlay -->
+            <div id="videoContainer" style="position: relative;">
+                <video id="video" autoplay muted></video>
+                <div id="emojiDisplay" class="emoji-overlay" style="position: absolute; top: 10%; left: 50%; transform: translateX(-50%); font-size: 4em; pointer-events: none;"></div>
+            </div>
+            
+            <!-- Game Info Display -->
+            <div id="gameInfo">
+                <p><strong>Detected Emotion:</strong> <span id="emotion">N/A</span></p>
+                <p id="targetEmotion" style="display: none;"><strong>Target Emotion:</strong> <span>N/A</span></p>
+                <p id="scoreDisplay" style="display: none;"><strong>Score:</strong> <span id="score">0</span></p>
+                <p id="timerDisplay" style="display: none;"><strong>Time Remaining:</strong> <span id="timer">30</span> seconds</p>
+                <p id="ageGenderDisplay" style="display: none;"><strong>Age:</strong> <span id="age">N/A</span>, <strong>Gender:</strong> <span id="gender">N/A</span></p>
+            </div>
+        </div>
+
+        <!-- Team Credits Section -->
+        <div class="credits">
+            <p><strong>Developed By:</strong></p>
+            <p><strong>Team Leader:</strong> <strong>Ansh Aggarwal</strong></p>
+            <p><strong>Members:</strong></p>
+            <ul>
+                <li>Siddharth Pandey</li>
+                <li>Shivam Bhela</li>
+                <li>Gangesh Goyal</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Load face-api.js library and main script -->
+    <script defer src="https://cdn.jsdelivr.net/gh/justadudewhohacks/face-api.js@0.22.2/dist/face-api.min.js"></script>
+</body>
+</html>
